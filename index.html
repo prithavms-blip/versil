@@ -13,6 +13,8 @@
     --blood:#b3121b;
     --blood-soft:#e8545c;
     --accent:#17457a;
+    --logo:#0f2a4a;
+    --logo-v:#ffffff;
     --radius:14px;
     --maxw:1080px;
     --font-display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
@@ -22,13 +24,15 @@
     :root:not([data-theme="light"]){
       --bg:#0a1220; --surface:#0f1a2c; --fg:#eaf0f8; --muted:#9aa8c0;
       --line:#1d2c45; --navy:#dce8f7; --navy-2:#8fb6e6; --accent:#6fa6e6;
-      --blood:#e23b44; --blood-soft:#f06a72; color-scheme:dark;
+      --blood:#e23b44; --blood-soft:#f06a72;
+      --logo:#dce8f7; --logo-v:#0a1220; color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
     --bg:#0a1220; --surface:#0f1a2c; --fg:#eaf0f8; --muted:#9aa8c0;
     --line:#1d2c45; --navy:#dce8f7; --navy-2:#8fb6e6; --accent:#6fa6e6;
-    --blood:#e23b44; --blood-soft:#f06a72; color-scheme:dark;
+    --blood:#e23b44; --blood-soft:#f06a72;
+    --logo:#dce8f7; --logo-v:#0a1220; color-scheme:dark;
   }
 
   *{box-sizing:border-box}
@@ -144,13 +148,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 
-<!-- Reusable brand mark: shield formed around a blood drop -->
+<!-- Brand mark: shield around the V-drop (theme-aware via --logo / --logo-v) -->
 <nav>
   <div class="wrap nav-in">
     <a href="#top" class="brand" aria-label="Versil home">
-      <svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true">
-        <path d="M15 1 L28 6 V17 C28 25 22 30 15 33 C8 30 2 25 2 17 V6 Z" fill="none" stroke="var(--navy-2)" stroke-width="2.2"/>
-        <path d="M15 11 C15 11 20 18 20 22 a5 5 0 0 1 -10 0 C10 18 15 11 15 11 Z" fill="var(--blood)"/>
+      <svg width="30" height="36" viewBox="0 0 200 240" aria-hidden="true">
+        <path d="M100 14 L176 40 V120 C176 176 142 210 100 226 C58 210 24 176 24 120 V40 Z" fill="none" stroke="var(--logo)" stroke-width="12" stroke-linejoin="round"/>
+        <path d="M100 78 C100 78 138 132 138 160 a38 38 0 0 1 -76 0 C62 132 100 78 100 78 Z" fill="var(--blood)"/>
+        <path d="M82 120 L100 162 L118 120 L108 120 L100 140 L92 120 Z" fill="var(--logo-v)"/>
       </svg>
       VERSIL
     </a>
@@ -177,10 +182,10 @@
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 200 230">
-          <path d="M100 6 L188 40 V116 C188 170 148 202 100 224 C52 202 12 170 12 116 V40 Z" fill="none" stroke="var(--navy-2)" stroke-width="5"/>
-          <path d="M100 70 C100 70 142 122 142 156 a42 42 0 0 1 -84 0 C58 122 100 70 100 70 Z" fill="var(--blood)"/>
-          <ellipse cx="86" cy="150" rx="11" ry="16" fill="#fff" opacity="0.28"/>
+        <svg viewBox="0 0 200 240">
+          <path d="M100 14 L176 40 V120 C176 176 142 210 100 226 C58 210 24 176 24 120 V40 Z" fill="none" stroke="var(--logo)" stroke-width="7" stroke-linejoin="round"/>
+          <path d="M100 78 C100 78 138 132 138 160 a38 38 0 0 1 -76 0 C62 132 100 78 100 78 Z" fill="var(--blood)"/>
+          <path d="M82 120 L100 162 L118 120 L108 120 L100 140 L92 120 Z" fill="var(--logo-v)"/>
         </svg>
       </div>
     </div>
