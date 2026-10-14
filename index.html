@@ -1,0 +1,322 @@
+<title>Versil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: single-column editorial landing — fixed slim nav, stacked full-bleed bands, generous vertical rhythm */
+  :root{
+    --bg:#ffffff;
+    --surface:#f4f6f9;
+    --fg:#0f1b2d;
+    --muted:#55617a;
+    --line:#e2e7f0;
+    --navy:#0f2a4a;
+    --navy-2:#17457a;
+    --blood:#b3121b;
+    --blood-soft:#e8545c;
+    --accent:#17457a;
+    --radius:14px;
+    --maxw:1080px;
+    --font-display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
+    --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0a1220; --surface:#0f1a2c; --fg:#eaf0f8; --muted:#9aa8c0;
+      --line:#1d2c45; --navy:#dce8f7; --navy-2:#8fb6e6; --accent:#6fa6e6;
+      --blood:#e23b44; --blood-soft:#f06a72; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a1220; --surface:#0f1a2c; --fg:#eaf0f8; --muted:#9aa8c0;
+    --line:#1d2c45; --navy:#dce8f7; --navy-2:#8fb6e6; --accent:#6fa6e6;
+    --blood:#e23b44; --blood-soft:#f06a72; color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--font-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:.3px}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+  .eyebrow{font-family:var(--font-body);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blood)}
+
+  /* NAV */
+  nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:1.5rem;letter-spacing:1.5px;color:var(--navy);text-decoration:none}
+  .brand svg{display:block;flex:none}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none}
+  .nav-links a:hover{color:var(--fg)}
+  .nav-cta{display:inline-flex;align-items:center;padding:9px 18px;background:var(--blood);color:#fff;border-radius:8px;font-weight:600;font-size:.88rem;text-decoration:none}
+  .nav-cta:hover{background:var(--blood-soft)}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  .hero{padding-block:clamp(56px,9vw,104px)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+  .hero h1{font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:600;color:var(--navy)}
+  .hero h1 .accent{color:var(--blood)}
+  .lede{margin-top:22px;font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);max-width:40ch}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:9px;font-weight:600;font-size:.98rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--blood);color:#fff}
+  .btn-primary:hover{background:var(--blood-soft)}
+  .btn-ghost{border-color:var(--line);color:var(--fg);background:transparent}
+  .btn-ghost:hover{border-color:var(--navy-2)}
+  .hero-art{display:flex;justify-content:center;align-items:center;min-width:0}
+  .hero-art svg{width:100%;max-width:300px;height:auto}
+
+  /* STAT STRIP */
+  .stripe{background:var(--navy);color:#eaf0f8}
+  :root[data-theme="dark"] .stripe,:root:not([data-theme="light"]) .stripe{background:var(--surface);border-block:1px solid var(--line)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stripe{background:var(--surface);border-block:1px solid var(--line)}}
+  .stripe .wrap{padding-block:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+  @media(max-width:640px){.stripe .wrap{grid-template-columns:1fr;gap:20px}}
+  .stat .num{font-family:var(--font-display);font-size:clamp(2rem,5vw,2.9rem);font-weight:700;color:#fff;line-height:1}
+  :root[data-theme="dark"] .stat .num,:root:not([data-theme="light"]) .stat .num{color:var(--navy)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stat .num{color:var(--navy)}}
+  .stat .lbl{margin-top:8px;font-size:.86rem;color:#aebfd6}
+  :root[data-theme="dark"] .stat .lbl,:root:not([data-theme="light"]) .stat .lbl{color:var(--muted)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stat .lbl{color:var(--muted)}}
+
+  /* SECTION */
+  section.band{padding-block:clamp(52px,8vw,88px)}
+  .band.alt{background:var(--surface)}
+  .sec-head{max-width:46ch}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:600;color:var(--navy);margin-top:12px}
+  .sec-head p{margin-top:16px;color:var(--muted);font-size:1.06rem}
+
+  /* FEATURES */
+  .features{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:820px){.features{grid-template-columns:1fr}}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .band.alt .card{background:var(--bg)}
+  .card .ic{width:44px;height:44px;border-radius:10px;background:color-mix(in srgb,var(--blood) 12%,transparent);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card h3{font-size:1.22rem;font-weight:600;color:var(--fg)}
+  .card p{margin-top:8px;color:var(--muted);font-size:.96rem}
+
+  /* COMPARISON */
+  .cmp-wrap{margin-top:40px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  table.cmp{width:100%;border-collapse:collapse;min-width:520px;font-size:.95rem}
+  table.cmp th,table.cmp td{padding:14px 18px;text-align:center;border-bottom:1px solid var(--line)}
+  table.cmp th:first-child,table.cmp td:first-child{text-align:left;font-weight:600;color:var(--fg)}
+  table.cmp thead th{font-family:var(--font-display);font-size:1.02rem;font-weight:600;color:var(--muted);background:var(--surface)}
+  .band.alt table.cmp thead th{background:var(--bg)}
+  table.cmp thead th.me{color:#fff;background:var(--blood)}
+  table.cmp tbody tr:last-child td{border-bottom:none}
+  table.cmp td.me{background:color-mix(in srgb,var(--blood) 7%,transparent);font-weight:700;color:var(--blood)}
+  .yes{color:var(--blood);font-weight:700}
+  .no{color:var(--muted)}
+  .cmp-note{margin-top:14px;font-size:.86rem;color:var(--muted)}
+
+  /* TEAM */
+  .team{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:640px){.team{grid-template-columns:1fr}}
+  .member{display:flex;gap:16px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .band.alt .member{background:var(--bg)}
+  .avatar{flex:none;width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:1.2rem}
+  .member h3{font-size:1.1rem;font-weight:600}
+  .member .role{color:var(--blood);font-size:.84rem;font-weight:600;margin-top:2px}
+  .member p{margin-top:8px;color:var(--muted);font-size:.9rem}
+
+  /* CONTACT */
+  .contact-card{margin-top:40px;max-width:620px;margin-inline:auto;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(26px,4vw,40px);text-align:center}
+  .band.alt .contact-card{background:var(--surface)}
+  .contact-card h2{font-size:clamp(1.7rem,3.6vw,2.3rem);color:var(--navy);font-weight:600}
+  .contact-card p{margin-top:12px;color:var(--muted)}
+  .email-row{margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .email-box{font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 18px;user-select:all}
+  .band.alt .email-box{background:var(--bg)}
+  .copy-btn{padding:12px 18px;border-radius:9px;border:1.5px solid var(--line);background:transparent;color:var(--fg);font-weight:600;font-size:.92rem;cursor:pointer}
+  .copy-btn:hover{border-color:var(--navy-2)}
+  .copy-btn.ok{border-color:var(--blood);color:var(--blood)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding-block:30px}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.84rem;color:var(--muted)}
+  .foot-brand{font-family:var(--font-display);font-weight:600;letter-spacing:1px;color:var(--navy);font-size:1.1rem}
+
+  :focus-visible{outline:2.5px solid var(--blood);outline-offset:2px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+
+<!-- Reusable brand mark: shield formed around a blood drop -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Versil home">
+      <svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true">
+        <path d="M15 1 L28 6 V17 C28 25 22 30 15 33 C8 30 2 25 2 17 V6 Z" fill="none" stroke="var(--navy-2)" stroke-width="2.2"/>
+        <path d="M15 11 C15 11 20 18 20 22 a5 5 0 0 1 -10 0 C10 18 15 11 15 11 Z" fill="var(--blood)"/>
+      </svg>
+      VERSIL
+    </a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Technology</a>
+      <a href="#team">Team</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Pre-hospital trauma care</span>
+        <h1>Stop the bleed the <span class="accent">gauze can't.</span></h1>
+        <p class="lede">Versil is developing an injectable, self-expanding foam that seals life-threatening wounds and stops bleeding in under 30 seconds — one-handed, in any conditions.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#solution" class="btn btn-ghost">How it works</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 200 230">
+          <path d="M100 6 L188 40 V116 C188 170 148 202 100 224 C52 202 12 170 12 116 V40 Z" fill="none" stroke="var(--navy-2)" stroke-width="5"/>
+          <path d="M100 70 C100 70 142 122 142 156 a42 42 0 0 1 -84 0 C58 122 100 70 100 70 Z" fill="var(--blood)"/>
+          <ellipse cx="86" cy="150" rx="11" ry="16" fill="#fff" opacity="0.28"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- STAT STRIP -->
+  <div class="stripe">
+    <div class="wrap">
+      <div class="stat"><div class="num">&lt;30s</div><div class="lbl">to stop bleeding</div></div>
+      <div class="stat"><div class="num">#1</div><div class="lbl">cause of preventable trauma death</div></div>
+      <div class="stat"><div class="num">$3B</div><div class="lbl">global hemostatics market</div></div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="band" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The problem</span>
+        <h2>When bleeding can't be pressed, today's tools fall short.</h2>
+        <p>Uncontrolled hemorrhage is the leading cause of preventable death after injury. For deep, noncompressible wounds — torso, groin, neck — gauze has to be packed by hand, washes out when wet, and depends on the patient still being able to clot. First responders need something faster, simpler, and more reliable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="band alt" id="solution">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The technology</span>
+        <h2>One material that travels like a liquid and holds like a solid.</h2>
+        <p>Dispensed straight into the wound, Versil's foam expands into a sponge that fills the cavity, applies outward pressure, and actively drives clotting — all at once.</p>
+      </div>
+      <div class="features">
+        <div class="card">
+          <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blood)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 21a7 7 0 0 0 7-7c0-4-7-11-7-11S5 10 5 14a7 7 0 0 0 7 7Z"/></svg></div>
+          <h3>Seals &amp; clots at once</h3>
+          <p>Applies pressure and triggers clotting together — working even when the patient's own blood can't clot.</p>
+        </div>
+        <div class="card">
+          <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blood)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg></div>
+          <h3>One-handed, no training</h3>
+          <p>No packing, no technique to learn. Reaches deep wounds that can't be packed and sets in under 30 seconds.</p>
+        </div>
+        <div class="card">
+          <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blood)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9M12 3v4M5 19l2-2M19 19l-2-2"/><circle cx="12" cy="13" r="3"/></svg></div>
+          <h3>Works in the field</h3>
+          <p>Waterproof and field-stable where gauze fails — rain, snow, or wet wounds — and removes cleanly in one piece.</p>
+        </div>
+      </div>
+
+      <!-- COMPARISON -->
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Capability</th><th>Gauze</th><th>Sealants</th><th class="me">Versil</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>One-handed, no packing</td><td class="no">No</td><td class="no">No</td><td class="me">Yes</td></tr>
+            <tr><td>Works when wet</td><td class="no">No</td><td class="no">No</td><td class="me">Yes</td></tr>
+            <tr><td>Actively triggers clotting</td><td class="no">No</td><td class="no">Partial</td><td class="me">Yes</td></tr>
+            <tr><td>Removes cleanly</td><td class="no">Partial</td><td class="no">No</td><td class="me">Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cmp-note">Representative comparison based on published performance and customer-discovery research. Versil is an investigational device in development; not yet FDA-cleared.</p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="band" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The team</span>
+        <h2>Built by the people who invented it.</h2>
+        <p>Versil is a University of Central Florida spinout, grounded in peer-reviewed materials research and shaped by direct work with the medics and responders who'll use it.</p>
+      </div>
+      <div class="team">
+        <div class="member">
+          <div class="avatar">PS</div>
+          <div>
+            <h3>Dr. Pritha Sarkar</h3>
+            <div class="role">Co-Founder &amp; Entrepreneurial Lead</div>
+            <p>Inventor of the core technology, leading Versil from the lab to the field.</p>
+          </div>
+        </div>
+        <div class="member">
+          <div class="avatar">KM</div>
+          <div>
+            <h3>Dr. Kausik Mukhopadhyay</h3>
+            <div class="role">Co-Founder &amp; Principal Investigator</div>
+            <p>Materials scientist and patent co-inventor; directs UCF's Hybrid Materials Lab.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="band alt" id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Partner with us.</h2>
+        <p>We're talking with investors, strategic partners, and trauma-care organizations. Reach out — we'd love to tell you more.</p>
+        <div class="email-row">
+          <span class="email-box" id="email">prithasarkar@versiltech.com</span>
+          <button class="copy-btn" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="foot-brand">VERSIL</span>
+    <span>&copy; 2026 Versil &middot; University of Central Florida spinout &middot; Patent-protected technology</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('copy'),email=document.getElementById('email');
+    if(!btn)return;
+    btn.addEventListener('click',function(){
+      var text=email.textContent.trim();
+      function done(){btn.textContent='Copied';btn.classList.add('ok');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('ok')},1800)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(select)
+      }else{select()}
+      function select(){
+        var r=document.createRange();r.selectNodeContents(email);
+        var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        try{document.execCommand('copy');done()}catch(e){}
+      }
+    });
+  })();
+</script>
